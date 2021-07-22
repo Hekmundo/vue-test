@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <title>Product App</title>
+  </head>
+  <body>
+    <nav class="nav-bar"></nav>
+
+    <div id="app">
+      <div class="product">
+        <div class="product-image">
+          <a class="product-anchor" :href="image">
+            <img :src="image" />
+          </a>
+        </div>
+
+        <div class="product-info">
+          <h1>{{ product }}</h1>
+          <p v-if="inStock">In Stock</p>
+          <p v-else>Out of stock</p>
+          <span v-show="onSale && inStock">On Sale!</span>
+
+          <ul>
+            <li v-for="detail in details">{{ detail }}</li>
+          </ul>
+
+          <div v-for="variant in variants" :key="variant.variantId">
+            <span @mouseover="updateProduct(variant.variantImage)">
+              {{ variant.variantColor }}
+            </span>
+          </div>
+
+          <button @click="addToCart">Add to Cart</button><br />
+          <button @click="removeFromCart">Remove</button>
+
+          <div class="cart">
+            <p>Cart({{cart}})</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
