@@ -31,7 +31,7 @@ const app = new Vue({
       this.image = variantImage;
     },
     removeFromCart() {
-      if (this.cart > 0) this.cart -= 1;
+      this.cart -= 1;
     },
   },
 });
