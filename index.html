@@ -12,47 +12,15 @@
 
     <!-- VUE APP -->
     <div id="app">
-      <div class="product">
-        <div class="product-image">
-          <a class="product-anchor" :href="image">
-            <img :src="image" />
-          </a>
-        </div>
-
-        <!-- PRODUCT INFO -->
-        <div class="product-info">
-          <h1>{{ product }}</h1>
-          <p v-if="inStock">In Stock</p>
-          <p v-else>Out of stock</p>
-          <span v-show="onSale && inStock">On Sale!</span>
-
-          <ul>
-            <li v-for="detail in details">{{ detail }}</li>
-          </ul>
-
-          <div
-            v-for="variant in variants"
-            :key="variant.variantId"
-            class="color-box"
-            :style="{ backgroundColor: variant.variantColor }"
-            @mouseover="updateProduct(variant.variantImage)"
-          ></div>
-
-          <button
-            @click="addToCart"
-            :disabled="!inStock"
-            :class="{ disabledButton: !inStock}"
-          >
-            Add to Cart
-          </button>
-          <button @click="removeFromCart" :disabled="cart < 1">Remove</button>
-
-          <div class="cart">
-            <p>Cart({{cart}})</p>
-          </div>
-        </div>
-        <!-- END OF PRODUCT INFO -->
+      <div class="cart">
+        <p>Cart({{cart.length}})</p>
       </div>
+
+      <product
+        :premium="premium"
+        @add-to-cart="updateCart"
+        @remove-from-cart="removeItem"
+      ></product>
     </div>
     <!-- END OF VUE APP -->
 

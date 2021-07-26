@@ -37,6 +37,10 @@ img {
   width: 50%;
 }
 
+.lineThrough {
+  text-decoration: line-through;
+}
+
 .color-box {
   width: 40px;
   height: 40px;
@@ -59,7 +63,6 @@ button {
   height: 40px;
   width: 100px;
   font-size: 14px;
-  /* display: block; */
 }
 
 .disabledButton {
